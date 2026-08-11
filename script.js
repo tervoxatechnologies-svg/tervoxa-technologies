@@ -61,7 +61,7 @@ const services = {
   },
   ads: {
     number: "05",
-    title: "Mera Ads & Digital Advertising",
+    title: "Meta Ads & Digital Advertising",
     intro: "Digital advertising services focused on reaching the right audience, generating leads and learning from campaign performance.",
     items: [
       ["Campaign Strategy", "Goals, audiences, channels and budgets"],
