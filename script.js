@@ -2,16 +2,90 @@
 
 
 /* =========================================================
-   PROGRESSIVE ENHANCEMENT FLAG
+   COMPLIANCE SPECIALIST CONTACT
 ========================================================= */
 
-document.documentElement.classList.add("js");
+const COMPLIANCE_SPECIALIST_PHONE = "+917042830976";
+const COMPLIANCE_SPECIALIST_WHATSAPP = "917042830976";
 
 
 /* =========================================================
    SERVICE DATA
 ========================================================= */
 
+const servicesData = [
+  {
+    id: "web",
+    number: "01",
+    title: "Website Development",
+    description: "Build a strong digital presence with modern, responsive and scalable websites designed around your business needs.",
+    mainCta: "Get a Website",
+    items: [
+      { name: "Business Websites", description: "Professional websites for startups, small businesses and growing companies that need a strong online presence.", cta: "Get Started" },
+      { name: "Corporate Websites", description: "Professional and structured corporate websites designed to present company information, services, products and business capabilities.", cta: "Get Started" },
+      { name: "E-commerce Websites", description: "Online stores with product catalogues, shopping functionality, order management and customer-focused experiences.", cta: "Get Started" },
+      { name: "Custom Web Applications", description: "Custom web-based applications designed around specific business requirements, workflows and operational needs.", cta: "Get Started" },
+      { name: "CMS Development", description: "Custom content management solutions that allow businesses to manage website content efficiently without depending on developers for every update.", cta: "Get Started" },
+      { name: "Landing Pages", description: "Professional and conversion-focused landing pages for products, services, campaigns and marketing activities.", cta: "Get Started" },
+      { name: "Website Maintenance & Support", description: "Ongoing website maintenance, updates, improvements, bug fixing, performance optimization and technical support.", cta: "Get Started" }
+    ]
+  },
+  {
+    id: "mobile",
+    number: "02",
+    title: "Mobile Application Development",
+    description: "Transform your ideas into reliable and user-friendly mobile applications built for modern Android experiences.",
+    mainCta: "Build Your App",
+    items: [
+      { name: "Android Application Development", description: "Development of modern Android applications focused on performance, usability, reliability and scalable architecture.", cta: "Get Started" },
+      { name: "Business Applications", description: "Custom mobile applications designed to support business operations, customer engagement and digital services.", cta: "Get Started" },
+      { name: "Custom Mobile Solutions", description: "Mobile solutions developed according to specific business requirements, workflows and user needs.", cta: "Get Started" },
+      { name: "UI/UX for Mobile Apps", description: "Clean, intuitive and user-friendly mobile interfaces designed to provide a smooth application experience.", cta: "Get Started" },
+      { name: "API Integration", description: "Integration of mobile applications with backend systems, APIs and required third-party services.", cta: "Get Started" },
+      { name: "App Maintenance & Support", description: "Application updates, bug fixing, performance improvements, compatibility updates and ongoing technical support.", cta: "Get Started" },
+      { name: "App Deployment", description: "Assistance with application packaging, release preparation and deployment processes.", cta: "Get Started" }
+    ]
+  },
+  {
+    id: "security",
+    number: "03",
+    title: "Cybersecurity Services",
+    description: "Protect your applications, networks and digital infrastructure with practical cybersecurity solutions.",
+    mainCta: "Get Security Consultation",
+    items: [
+      { name: "Security Assessment", description: "Assessment of applications, systems and infrastructure to identify potential security weaknesses and areas requiring improvement.", cta: "Get Security Consultation" },
+      { name: "Vulnerability Assessment", description: "Identification and analysis of known security vulnerabilities across applications, systems and networks.", cta: "Get Security Consultation" },
+      { name: "Penetration Testing", description: "Authorized security testing designed to identify and validate exploitable security weaknesses in a controlled environment.", cta: "Get Security Consultation" },
+      { name: "Web Application Security Testing", description: "Security testing of websites and web applications to identify common vulnerabilities and security weaknesses.", cta: "Get Security Consultation" },
+      { name: "Mobile Application Security Testing", description: "Security assessment of mobile applications to identify potential vulnerabilities and insecure implementation.", cta: "Get Security Consultation" },
+      { name: "Network Security", description: "Assessment and improvement of network security controls, configurations and potential exposure points.", cta: "Get Security Consultation" },
+      { name: "Security Monitoring", description: "Monitoring-focused solutions designed to help identify suspicious activities and potential security events.", cta: "Get Security Consultation" },
+      { name: "Security Audit & Compliance", description: "Review of security practices, controls, configurations and applicable compliance requirements.", cta: "Get Security Consultation" },
+      { name: "Cybersecurity Consulting", description: "Practical cybersecurity guidance for businesses looking to improve their security posture, processes and protection strategies.", cta: "Get Security Consultation" }
+    ]
+  },
+  {
+    id: "compliance",
+    number: "04",
+    title: "Business Compliance & Solutions",
+    description: "Reliable business compliance and support services to help businesses manage their registrations, taxation, accounting and documentation requirements.",
+    mainCta: "Contact Compliance Specialist",
+    items: [
+      { name: "GST Registration & Compliance", description: "Assistance with GST registration and related compliance requirements for businesses.", cta: "Enquire Now" },
+      { name: "GST Return Filing", description: "Support for periodic GST return filing and related documentation requirements.", cta: "Enquire Now" },
+      { name: "ITR / Income Tax Services", description: "Assistance with income-tax return related requirements and documentation.", cta: "Enquire Now" },
+      { name: "MSME Registration", description: "Support with MSME/Udyam registration requirements for eligible businesses.", cta: "Enquire Now" },
+      { name: "Business Registration", description: "Assistance with applicable business registration processes and related documentation.", cta: "Enquire Now" },
+      { name: "Accounting & Bookkeeping", description: "Organized accounting and bookkeeping support to help businesses maintain proper financial records.", cta: "Enquire Now" },
+      { name: "Business Documentation", description: "Assistance with essential business documentation required for business operations and compliance.", cta: "Enquire Now" },
+      { name: "Compliance Management", description: "Support for managing recurring business compliance requirements and maintaining necessary records.", cta: "Enquire Now" },
+      { name: "Business Process Solutions", description: "Practical administrative and business process support designed to improve business operations and organization.", cta: "Enquire Now" }
+    ]
+  }
+];
+
+
+// Legacy services object for modal compatibility
 const services = {
 
   web: {
@@ -20,17 +94,16 @@ const services = {
     title: "Website Development",
 
     intro:
-      "Professional websites engineered for performance, mobile responsiveness, credibility and measurable business outcomes.",
+      "Build a strong digital presence with modern, responsive and scalable websites designed around your business needs.",
 
     items: [
-      ["Business Websites", "Corporate, service and company websites"],
-      ["Landing Pages", "Campaign and lead-generation pages"],
-      ["E-commerce", "Online stores and product experiences"],
-      ["CMS Integration", "Content management and easy updates"],
-      ["Responsive UI", "Mobile, tablet and desktop optimization"],
-      ["SEO Foundations", "Technical structure for search visibility"],
-      ["Performance", "Fast-loading, optimized front ends"],
-      ["Maintenance", "Updates, improvements and support"]
+      ["Business Websites", "Professional websites for startups, small businesses and growing companies that need a strong online presence."],
+      ["Corporate Websites", "Professional and structured corporate websites designed to present company information, services, products and business capabilities."],
+      ["E-commerce Websites", "Online stores with product catalogues, shopping functionality, order management and customer-focused experiences."],
+      ["Custom Web Applications", "Custom web-based applications designed around specific business requirements, workflows and operational needs."],
+      ["CMS Development", "Custom content management solutions that allow businesses to manage website content efficiently without depending on developers for every update."],
+      ["Landing Pages", "Professional and conversion-focused landing pages for products, services, campaigns and marketing activities."],
+      ["Website Maintenance & Support", "Ongoing website maintenance, updates, improvements, bug fixing, performance optimization and technical support."]
     ]
   },
 
@@ -41,17 +114,16 @@ const services = {
     title: "Mobile Application Development",
 
     intro:
-      "User-focused mobile applications for customer engagement, internal workflows and new digital products.",
+      "Transform your ideas into reliable and user-friendly mobile applications built for modern Android experiences.",
 
     items: [
-      ["Android Apps", "Native Android application solutions"],
-      ["iOS Apps", "iPhone and iPad application experiences"],
-      ["Cross-platform", "Efficient multi-platform development"],
-      ["UI/UX", "Clean and intuitive mobile interfaces"],
-      ["API Integration", "Connect apps to business systems"],
-      ["Authentication", "Secure login and user management"],
-      ["Notifications", "Push notification workflows"],
-      ["App Support", "Post-launch fixes and enhancements"]
+      ["Android Application Development", "Development of modern Android applications focused on performance, usability, reliability and scalable architecture."],
+      ["Business Applications", "Custom mobile applications designed to support business operations, customer engagement and digital services."],
+      ["Custom Mobile Solutions", "Mobile solutions developed according to specific business requirements, workflows and user needs."],
+      ["UI/UX for Mobile Apps", "Clean, intuitive and user-friendly mobile interfaces designed to provide a smooth application experience."],
+      ["API Integration", "Integration of mobile applications with backend systems, APIs and required third-party services."],
+      ["App Maintenance & Support", "Application updates, bug fixing, performance improvements, compatibility updates and ongoing technical support."],
+      ["App Deployment", "Assistance with application packaging, release preparation and deployment processes."]
     ]
   },
 
@@ -62,17 +134,18 @@ const services = {
     title: "Cybersecurity Services",
 
     intro:
-      "Security-focused services designed to identify weaknesses, improve controls and reduce business risk.",
+      "Protect your applications, networks and digital infrastructure with practical cybersecurity solutions.",
 
     items: [
-      ["Security Assessment", "Review applications, infrastructure and controls"],
-      ["Vulnerability Assessment", "Identify and prioritize security weaknesses"],
-      ["Web Security", "Assess common web application risks"],
-      ["Network Security", "Review network exposure and controls"],
-      ["Security Hardening", "Improve configurations and defensive posture"],
-      ["Log & Monitoring", "Improve security visibility and alerting"],
-      ["Incident Readiness", "Response planning and preparedness"],
-      ["Security Awareness", "Practical security guidance for teams"]
+      ["Security Assessment", "Assessment of applications, systems and infrastructure to identify potential security weaknesses and areas requiring improvement."],
+      ["Vulnerability Assessment", "Identification and analysis of known security vulnerabilities across applications, systems and networks."],
+      ["Penetration Testing", "Authorized security testing designed to identify and validate exploitable security weaknesses in a controlled environment."],
+      ["Web Application Security Testing", "Security testing of websites and web applications to identify common vulnerabilities and security weaknesses."],
+      ["Mobile Application Security Testing", "Security assessment of mobile applications to identify potential vulnerabilities and insecure implementation."],
+      ["Network Security", "Assessment and improvement of network security controls, configurations and potential exposure points."],
+      ["Security Monitoring", "Monitoring-focused solutions designed to help identify suspicious activities and potential security events."],
+      ["Security Audit & Compliance", "Review of security practices, controls, configurations and applicable compliance requirements."],
+      ["Cybersecurity Consulting", "Practical cybersecurity guidance for businesses looking to improve their security posture, processes and protection strategies."]
     ]
   },
 
@@ -80,40 +153,21 @@ const services = {
   tax: {
     number: "04",
 
-    title: "Business Tax & Compliance Services",
+    title: "Business Compliance & Solutions",
 
     intro:
-      "Structured support for business tax administration, records and compliance workflows. Statutory advice should be provided by qualified professionals where required.",
+      "Reliable business compliance and support services to help businesses manage their registrations, taxation, accounting and documentation requirements.",
 
     items: [
-      ["Business Registration", "Setup and documentation workflow support"],
-      ["Tax Documentation", "Organized preparation of business records"],
-      ["GST Support", "GST-related documentation and process support"],
-      ["Compliance Calendar", "Track recurring business obligations"],
-      ["Record Organization", "Improve document management"],
-      ["Filing Coordination", "Coordinate information for professional filing"],
-      ["Business Documentation", "Standardize essential paperwork"],
-      ["Compliance Review", "Identify process gaps and action items"]
-    ]
-  },
-
-
-  ads: {
-    number: "05",
-
-    title: "Meta Ads & Digital Advertising",
-
-    intro:
-      "Digital advertising services focused on reaching the right audience, generating leads and improving campaign performance.",
-
-    items: [
-      ["Campaign Strategy", "Goals, audiences, channels and budgets"],
-      ["Search Advertising", "High-intent paid search campaigns"],
-      ["Social Advertising", "Audience-focused social campaigns"],
-      ["Creative Direction", "Ad concepts, messaging and formats"],
-      ["Remarketing", "Reconnect with interested visitors"],
-      ["Analytics", "Measure clicks, leads and conversions"],
-      ["Optimization", "Improve campaigns using performance data"]
+      ["GST Registration & Compliance", "Assistance with GST registration and related compliance requirements for businesses."],
+      ["GST Return Filing", "Support for periodic GST return filing and related documentation requirements."],
+      ["ITR / Income Tax Services", "Assistance with income-tax return related requirements and documentation."],
+      ["MSME Registration", "Support with MSME/Udyam registration requirements for eligible businesses."],
+      ["Business Registration", "Assistance with applicable business registration processes and related documentation."],
+      ["Accounting & Bookkeeping", "Organized accounting and bookkeeping support to help businesses maintain proper financial records."],
+      ["Business Documentation", "Assistance with essential business documentation required for business operations and compliance."],
+      ["Compliance Management", "Support for managing recurring business compliance requirements and maintaining necessary records."],
+      ["Business Process Solutions", "Practical administrative and business process support designed to improve business operations and organization."]
     ]
   }
 
@@ -307,8 +361,105 @@ if (modalCta) {
 
 
 /* =========================================================
-   MOBILE NAVIGATION
+   SERVICES ACCORDION
 ========================================================= */
+
+let currentExpandedCategory = null;
+
+function expandServiceCategory(categoryId) {
+  // If clicking the same category, collapse it
+  if (currentExpandedCategory === categoryId) {
+    collapseServiceCategory(categoryId);
+    return;
+  }
+
+  // Close previously opened category
+  if (currentExpandedCategory) {
+    collapseServiceCategory(currentExpandedCategory);
+  }
+
+  // Open new category
+  const categoryElement = document.querySelector(`[data-category="${categoryId}"]`);
+  if (categoryElement) {
+    categoryElement.classList.add("expanded");
+    currentExpandedCategory = categoryId;
+  }
+}
+
+function collapseServiceCategory(categoryId) {
+  const categoryElement = document.querySelector(`[data-category="${categoryId}"]`);
+  if (categoryElement) {
+    categoryElement.classList.remove("expanded");
+    if (currentExpandedCategory === categoryId) {
+      currentExpandedCategory = null;
+    }
+  }
+}
+
+function selectService(serviceName) {
+  // Update the service select field in the inquiry form
+  const serviceSelect = document.getElementById("service");
+  if (serviceSelect) {
+    serviceSelect.value = serviceName;
+  }
+
+  // Scroll to the inquiry form
+  const contactSection = document.getElementById("contact");
+  if (contactSection) {
+    setTimeout(() => {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    }, 100);
+  }
+}
+
+// Event delegation for service category toggles
+document.addEventListener("click", (e) => {
+  if (e.target.closest(".service-category-toggle")) {
+    const toggle = e.target.closest(".service-category-toggle");
+    const categoryId = toggle.dataset.categoryId;
+    expandServiceCategory(categoryId);
+  }
+
+  if (e.target.closest(".service-inquiry-btn")) {
+    const btn = e.target.closest(".service-inquiry-btn");
+    const serviceName = btn.dataset.serviceName;
+    selectService(serviceName);
+  }
+});
+
+// Keyboard accessibility for accordion
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Enter" || e.key === " ") {
+    if (e.target.closest(".service-category-toggle")) {
+      e.preventDefault();
+      const toggle = e.target.closest(".service-category-toggle");
+      const categoryId = toggle.dataset.categoryId;
+      expandServiceCategory(categoryId);
+    }
+  }
+});
+
+
+/* =========================================================
+   COMPLIANCE SPECIALIST CONTACT
+========================================================= */
+
+document.addEventListener("click", (e) => {
+  if (e.target.closest("[data-compliance-action]")) {
+    const btn = e.target.closest("[data-compliance-action]");
+    const action = btn.dataset.complianceAction;
+
+    if (action === "call") {
+      window.location.href = `tel:${COMPLIANCE_SPECIALIST_PHONE}`;
+    } else if (action === "whatsapp") {
+      const whatsappUrl = `https://wa.me/${COMPLIANCE_SPECIALIST_WHATSAPP}?text=Hi%20Tervoxa%20Technologies%2C%20I%20would%20like%20to%20inquire%20about%20business%20compliance%20services.`;
+      window.open(whatsappUrl, "_blank");
+    }
+  }
+});
+
+
+
 
 const menuToggle =
   document.querySelector(
@@ -519,54 +670,6 @@ document
     );
 
   });
-
-
-/* =========================================================
-   SCROLL REVEAL
-========================================================= */
-
-const revealTargets = [
-  ...document.querySelectorAll(".reveal, .reveal-stagger")
-];
-
-if (
-  revealTargets.length &&
-  "IntersectionObserver" in window
-) {
-
-  const revealObserver = new IntersectionObserver(
-    (entries, observer) => {
-
-      entries.forEach((entry) => {
-
-        if (entry.isIntersecting) {
-
-          entry.target.classList.add("is-visible");
-
-          observer.unobserve(entry.target);
-
-        }
-
-      });
-
-    },
-    {
-      threshold: 0.14,
-      rootMargin: "0px 0px -60px 0px"
-    }
-  );
-
-  revealTargets.forEach((target) => {
-    revealObserver.observe(target);
-  });
-
-} else {
-
-  revealTargets.forEach((target) => {
-    target.classList.add("is-visible");
-  });
-
-}
 
 
 /* =========================================================

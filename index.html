@@ -16,9 +16,9 @@
 
   <meta name="theme-color" content="#08071a" />
 
-  <title>Tervoxa Technologies | Build. Protect. Grow.</title>
+  <title>Tervoxa Technologies</title>
 
-  <link rel="icon" href="assets/tervoxa-logo.jpg" />
+  <link rel="icon" href="tervoxa-logo.jpeg" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -68,7 +68,7 @@
       >
 
         <img
-          src="assets/tervoxa-logo.jpg"
+          src="tervoxa-logo.jpeg"
           alt="Tervoxa Technologies logo"
         />
 
@@ -158,6 +158,11 @@
 
         <div
           class="hero-slide"
+          style="background-image:url('assets/pexels-mikhail-nilov-7988086.jpg');"
+        ></div>
+
+        <div
+          class="hero-slide"
           style="background-image:url('assets/pexels-dkomov-34803969.jpg');"
         ></div>
 
@@ -190,10 +195,10 @@
 
 
           <p class="hero-lead">
-            Tervoxa helps businesses turn ideas into reliable
-            digital products, strengthen cyber defenses, simplify
-            compliance, and reach customers through measurable
-            advertising.
+            Tervoxa Technologies helps businesses turn ideas into
+            reliable digital products, strengthen cyber defenses,
+            simplify compliance, and reach customers through
+            measurable advertising.
           </p>
 
 
@@ -261,17 +266,10 @@
             <small>Tax & Compliance</small>
           </div>
 
-          <div class="orbit-card card-d">
-            <span>04</span>
-            <b>Grow</b>
-            <small>Digital Ads</small>
-          </div>
-
-
           <div class="hero-logo-ring">
 
             <img
-              src="assets/tervoxa-logo.jpg"
+              src="tervoxa-logo.jpeg"
               alt="Tervoxa Technologies"
             />
 
@@ -361,8 +359,7 @@
 
       <div class="container">
 
-
-        <div class="section-heading reveal">
+        <div class="section-heading">
 
           <div>
 
@@ -379,224 +376,580 @@
 
 
           <p>
-            Choose a service to see the core capabilities
-            included in each solution area.
+            Select a service category to explore our solutions.
           </p>
 
         </div>
 
 
-        <div class="service-grid reveal-stagger">
+        <div class="services-accordion">
 
+          <!-- SERVICE CATEGORY 01: WEBSITE DEVELOPMENT -->
+          <div class="service-category" data-category="web">
+            <button
+              type="button"
+              class="service-category-toggle"
+              data-category-id="web"
+              aria-expanded="false"
+              aria-controls="service-items-web"
+            >
+              <div class="category-header">
+                <span class="category-number">01</span>
+                <div class="category-info">
+                  <h3>Website Development</h3>
+                  <p>Build a strong digital presence with modern, responsive and scalable websites designed around your business needs.</p>
+                </div>
+              </div>
+              <span class="toggle-icon" aria-hidden="true">+</span>
+            </button>
 
-          <!-- WEBSITE -->
+            <div class="service-items" id="service-items-web">
+              <div class="items-list">
+                <div class="service-item">
+                  <div class="item-header">
+                    <h4>Business Websites</h4>
+                  </div>
+                  <p>Professional websites for startups, small businesses and growing companies that need a strong online presence.</p>
+                  <button
+                    type="button"
+                    class="btn btn-service service-inquiry-btn"
+                    data-service-name="Business Websites"
+                  >
+                    Get Started
+                  </button>
+                </div>
 
-          <article class="service-card">
+                <div class="service-item">
+                  <div class="item-header">
+                    <h4>Corporate Websites</h4>
+                  </div>
+                  <p>Professional and structured corporate websites designed to present company information, services, products and business capabilities.</p>
+                  <button
+                    type="button"
+                    class="btn btn-service service-inquiry-btn"
+                    data-service-name="Corporate Websites"
+                  >
+                    Get Started
+                  </button>
+                </div>
 
-            <div class="service-image image-web">
+                <div class="service-item">
+                  <div class="item-header">
+                    <h4>E-commerce Websites</h4>
+                  </div>
+                  <p>Online stores with product catalogues, shopping functionality, order management and customer-focused experiences.</p>
+                  <button
+                    type="button"
+                    class="btn btn-service service-inquiry-btn"
+                    data-service-name="E-commerce Websites"
+                  >
+                    Get Started
+                  </button>
+                </div>
 
-              <div class="image-label">
-                WEB
+                <div class="service-item">
+                  <div class="item-header">
+                    <h4>Custom Web Applications</h4>
+                  </div>
+                  <p>Custom web-based applications designed around specific business requirements, workflows and operational needs.</p>
+                  <button
+                    type="button"
+                    class="btn btn-service service-inquiry-btn"
+                    data-service-name="Custom Web Applications"
+                  >
+                    Get Started
+                  </button>
+                </div>
+
+                <div class="service-item">
+                  <div class="item-header">
+                    <h4>CMS Development</h4>
+                  </div>
+                  <p>Custom content management solutions that allow businesses to manage website content efficiently without depending on developers for every update.</p>
+                  <button
+                    type="button"
+                    class="btn btn-service service-inquiry-btn"
+                    data-service-name="CMS Development"
+                  >
+                    Get Started
+                  </button>
+                </div>
+
+                <div class="service-item">
+                  <div class="item-header">
+                    <h4>Landing Pages</h4>
+                  </div>
+                  <p>Professional and conversion-focused landing pages for products, services, campaigns and marketing activities.</p>
+                  <button
+                    type="button"
+                    class="btn btn-service service-inquiry-btn"
+                    data-service-name="Landing Pages"
+                  >
+                    Get Started
+                  </button>
+                </div>
+
+                <div class="service-item">
+                  <div class="item-header">
+                    <h4>Website Maintenance & Support</h4>
+                  </div>
+                  <p>Ongoing website maintenance, updates, improvements, bug fixing, performance optimization and technical support.</p>
+                  <button
+                    type="button"
+                    class="btn btn-service service-inquiry-btn"
+                    data-service-name="Website Maintenance & Support"
+                  >
+                    Get Started
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SERVICE CATEGORY 02: MOBILE APPLICATION DEVELOPMENT -->
+          <div class="service-category" data-category="mobile">
+            <button
+              type="button"
+              class="service-category-toggle"
+              data-category-id="mobile"
+              aria-expanded="false"
+              aria-controls="service-items-mobile"
+            >
+              <div class="category-header">
+                <span class="category-number">02</span>
+                <div class="category-info">
+                  <h3>Mobile Application Development</h3>
+                  <p>Transform your ideas into reliable and user-friendly mobile applications built for modern Android experiences.</p>
+                </div>
+              </div>
+              <span class="toggle-icon" aria-hidden="true">+</span>
+            </button>
+
+            <div class="service-items" id="service-items-mobile">
+              <div class="items-list">
+                <div class="service-item">
+                  <div class="item-header">
+                    <h4>Android Application Development</h4>
+                  </div>
+                  <p>Development of modern Android applications focused on performance, usability, reliability and scalable architecture.</p>
+                  <button
+                    type="button"
+                    class="btn btn-service service-inquiry-btn"
+                    data-service-name="Android Application Development"
+                  >
+                    Get Started
+                  </button>
+                </div>
+
+                <div class="service-item">
+                  <div class="item-header">
+                    <h4>Business Applications</h4>
+                  </div>
+                  <p>Custom mobile applications designed to support business operations, customer engagement and digital services.</p>
+                  <button
+                    type="button"
+                    class="btn btn-service service-inquiry-btn"
+                    data-service-name="Business Applications"
+                  >
+                    Get Started
+                  </button>
+                </div>
+
+                <div class="service-item">
+                  <div class="item-header">
+                    <h4>Custom Mobile Solutions</h4>
+                  </div>
+                  <p>Mobile solutions developed according to specific business requirements, workflows and user needs.</p>
+                  <button
+                    type="button"
+                    class="btn btn-service service-inquiry-btn"
+                    data-service-name="Custom Mobile Solutions"
+                  >
+                    Get Started
+                  </button>
+                </div>
+
+                <div class="service-item">
+                  <div class="item-header">
+                    <h4>UI/UX for Mobile Apps</h4>
+                  </div>
+                  <p>Clean, intuitive and user-friendly mobile interfaces designed to provide a smooth application experience.</p>
+                  <button
+                    type="button"
+                    class="btn btn-service service-inquiry-btn"
+                    data-service-name="UI/UX for Mobile Apps"
+                  >
+                    Get Started
+                  </button>
+                </div>
+
+                <div class="service-item">
+                  <div class="item-header">
+                    <h4>API Integration</h4>
+                  </div>
+                  <p>Integration of mobile applications with backend systems, APIs and required third-party services.</p>
+                  <button
+                    type="button"
+                    class="btn btn-service service-inquiry-btn"
+                    data-service-name="API Integration"
+                  >
+                    Get Started
+                  </button>
+                </div>
+
+                <div class="service-item">
+                  <div class="item-header">
+                    <h4>App Maintenance & Support</h4>
+                  </div>
+                  <p>Application updates, bug fixing, performance improvements, compatibility updates and ongoing technical support.</p>
+                  <button
+                    type="button"
+                    class="btn btn-service service-inquiry-btn"
+                    data-service-name="App Maintenance & Support"
+                  >
+                    Get Started
+                  </button>
+                </div>
+
+                <div class="service-item">
+                  <div class="item-header">
+                    <h4>App Deployment</h4>
+                  </div>
+                  <p>Assistance with application packaging, release preparation and deployment processes.</p>
+                  <button
+                    type="button"
+                    class="btn btn-service service-inquiry-btn"
+                    data-service-name="App Deployment"
+                  >
+                    Get Started
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SERVICE CATEGORY 03: CYBERSECURITY SERVICES -->
+          <div class="service-category" data-category="security">
+            <button
+              type="button"
+              class="service-category-toggle"
+              data-category-id="security"
+              aria-expanded="false"
+              aria-controls="service-items-security"
+            >
+              <div class="category-header">
+                <span class="category-number">03</span>
+                <div class="category-info">
+                  <h3>Cybersecurity Services</h3>
+                  <p>Protect your applications, networks and digital infrastructure with practical cybersecurity solutions.</p>
+                </div>
+              </div>
+              <span class="toggle-icon" aria-hidden="true">+</span>
+            </button>
+
+            <div class="service-items" id="service-items-security">
+              <div class="items-list">
+                <div class="service-item">
+                  <div class="item-header">
+                    <h4>Security Assessment</h4>
+                  </div>
+                  <p>Assessment of applications, systems and infrastructure to identify potential security weaknesses and areas requiring improvement.</p>
+                  <button
+                    type="button"
+                    class="btn btn-service service-inquiry-btn"
+                    data-service-name="Security Assessment"
+                  >
+                    Get Security Consultation
+                  </button>
+                </div>
+
+                <div class="service-item">
+                  <div class="item-header">
+                    <h4>Vulnerability Assessment</h4>
+                  </div>
+                  <p>Identification and analysis of known security vulnerabilities across applications, systems and networks.</p>
+                  <button
+                    type="button"
+                    class="btn btn-service service-inquiry-btn"
+                    data-service-name="Vulnerability Assessment"
+                  >
+                    Get Security Consultation
+                  </button>
+                </div>
+
+                <div class="service-item">
+                  <div class="item-header">
+                    <h4>Penetration Testing</h4>
+                  </div>
+                  <p>Authorized security testing designed to identify and validate exploitable security weaknesses in a controlled environment.</p>
+                  <button
+                    type="button"
+                    class="btn btn-service service-inquiry-btn"
+                    data-service-name="Penetration Testing"
+                  >
+                    Get Security Consultation
+                  </button>
+                </div>
+
+                <div class="service-item">
+                  <div class="item-header">
+                    <h4>Web Application Security Testing</h4>
+                  </div>
+                  <p>Security testing of websites and web applications to identify common vulnerabilities and security weaknesses.</p>
+                  <button
+                    type="button"
+                    class="btn btn-service service-inquiry-btn"
+                    data-service-name="Web Application Security Testing"
+                  >
+                    Get Security Consultation
+                  </button>
+                </div>
+
+                <div class="service-item">
+                  <div class="item-header">
+                    <h4>Mobile Application Security Testing</h4>
+                  </div>
+                  <p>Security assessment of mobile applications to identify potential vulnerabilities and insecure implementation.</p>
+                  <button
+                    type="button"
+                    class="btn btn-service service-inquiry-btn"
+                    data-service-name="Mobile Application Security Testing"
+                  >
+                    Get Security Consultation
+                  </button>
+                </div>
+
+                <div class="service-item">
+                  <div class="item-header">
+                    <h4>Network Security</h4>
+                  </div>
+                  <p>Assessment and improvement of network security controls, configurations and potential exposure points.</p>
+                  <button
+                    type="button"
+                    class="btn btn-service service-inquiry-btn"
+                    data-service-name="Network Security"
+                  >
+                    Get Security Consultation
+                  </button>
+                </div>
+
+                <div class="service-item">
+                  <div class="item-header">
+                    <h4>Security Monitoring</h4>
+                  </div>
+                  <p>Monitoring-focused solutions designed to help identify suspicious activities and potential security events.</p>
+                  <button
+                    type="button"
+                    class="btn btn-service service-inquiry-btn"
+                    data-service-name="Security Monitoring"
+                  >
+                    Get Security Consultation
+                  </button>
+                </div>
+
+                <div class="service-item">
+                  <div class="item-header">
+                    <h4>Security Audit & Compliance</h4>
+                  </div>
+                  <p>Review of security practices, controls, configurations and applicable compliance requirements.</p>
+                  <button
+                    type="button"
+                    class="btn btn-service service-inquiry-btn"
+                    data-service-name="Security Audit & Compliance"
+                  >
+                    Get Security Consultation
+                  </button>
+                </div>
+
+                <div class="service-item">
+                  <div class="item-header">
+                    <h4>Cybersecurity Consulting</h4>
+                  </div>
+                  <p>Practical cybersecurity guidance for businesses looking to improve their security posture, processes and protection strategies.</p>
+                  <button
+                    type="button"
+                    class="btn btn-service service-inquiry-btn"
+                    data-service-name="Cybersecurity Consulting"
+                  >
+                    Get Security Consultation
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SERVICE CATEGORY 04: BUSINESS COMPLIANCE & SOLUTIONS -->
+          <div class="service-category" data-category="compliance">
+            <button
+              type="button"
+              class="service-category-toggle"
+              data-category-id="compliance"
+              aria-expanded="false"
+              aria-controls="service-items-compliance"
+            >
+              <div class="category-header">
+                <span class="category-number">04</span>
+                <div class="category-info">
+                  <h3>Business Compliance & Solutions</h3>
+                  <p>Reliable business compliance and support services to help businesses manage their registrations, taxation, accounting and documentation requirements.</p>
+                </div>
+              </div>
+              <span class="toggle-icon" aria-hidden="true">+</span>
+            </button>
+
+            <div class="service-items" id="service-items-compliance">
+              <div class="items-list">
+                <div class="service-item">
+                  <div class="item-header">
+                    <h4>GST Registration & Compliance</h4>
+                  </div>
+                  <p>Assistance with GST registration and related compliance requirements for businesses.</p>
+                  <button
+                    type="button"
+                    class="btn btn-service service-inquiry-btn"
+                    data-service-name="GST Registration & Compliance"
+                  >
+                    Enquire Now
+                  </button>
+                </div>
+
+                <div class="service-item">
+                  <div class="item-header">
+                    <h4>GST Return Filing</h4>
+                  </div>
+                  <p>Support for periodic GST return filing and related documentation requirements.</p>
+                  <button
+                    type="button"
+                    class="btn btn-service service-inquiry-btn"
+                    data-service-name="GST Return Filing"
+                  >
+                    Enquire Now
+                  </button>
+                </div>
+
+                <div class="service-item">
+                  <div class="item-header">
+                    <h4>ITR / Income Tax Services</h4>
+                  </div>
+                  <p>Assistance with income-tax return related requirements and documentation.</p>
+                  <button
+                    type="button"
+                    class="btn btn-service service-inquiry-btn"
+                    data-service-name="ITR / Income Tax Services"
+                  >
+                    Enquire Now
+                  </button>
+                </div>
+
+                <div class="service-item">
+                  <div class="item-header">
+                    <h4>MSME Registration</h4>
+                  </div>
+                  <p>Support with MSME/Udyam registration requirements for eligible businesses.</p>
+                  <button
+                    type="button"
+                    class="btn btn-service service-inquiry-btn"
+                    data-service-name="MSME Registration"
+                  >
+                    Enquire Now
+                  </button>
+                </div>
+
+                <div class="service-item">
+                  <div class="item-header">
+                    <h4>Business Registration</h4>
+                  </div>
+                  <p>Assistance with applicable business registration processes and related documentation.</p>
+                  <button
+                    type="button"
+                    class="btn btn-service service-inquiry-btn"
+                    data-service-name="Business Registration"
+                  >
+                    Enquire Now
+                  </button>
+                </div>
+
+                <div class="service-item">
+                  <div class="item-header">
+                    <h4>Accounting & Bookkeeping</h4>
+                  </div>
+                  <p>Organized accounting and bookkeeping support to help businesses maintain proper financial records.</p>
+                  <button
+                    type="button"
+                    class="btn btn-service service-inquiry-btn"
+                    data-service-name="Accounting & Bookkeeping"
+                  >
+                    Enquire Now
+                  </button>
+                </div>
+
+                <div class="service-item">
+                  <div class="item-header">
+                    <h4>Business Documentation</h4>
+                  </div>
+                  <p>Assistance with essential business documentation required for business operations and compliance.</p>
+                  <button
+                    type="button"
+                    class="btn btn-service service-inquiry-btn"
+                    data-service-name="Business Documentation"
+                  >
+                    Enquire Now
+                  </button>
+                </div>
+
+                <div class="service-item">
+                  <div class="item-header">
+                    <h4>Compliance Management</h4>
+                  </div>
+                  <p>Support for managing recurring business compliance requirements and maintaining necessary records.</p>
+                  <button
+                    type="button"
+                    class="btn btn-service service-inquiry-btn"
+                    data-service-name="Compliance Management"
+                  >
+                    Enquire Now
+                  </button>
+                </div>
+
+                <div class="service-item">
+                  <div class="item-header">
+                    <h4>Business Process Solutions</h4>
+                  </div>
+                  <p>Practical administrative and business process support designed to improve business operations and organization.</p>
+                  <button
+                    type="button"
+                    class="btn btn-service service-inquiry-btn"
+                    data-service-name="Business Process Solutions"
+                  >
+                    Enquire Now
+                  </button>
+                </div>
               </div>
 
-            </div>
-
-
-            <div class="service-body">
-
-              <div class="service-number">
-                01
+              <!-- COMPLIANCE SPECIALIST CONTACT SECTION -->
+              <div class="compliance-specialist-section">
+                <h4>Need Help With Business Compliance?</h4>
+                <p>Connect directly with our Business Compliance Specialist for GST, ITR, accounting, registration and related business compliance enquiries.</p>
+                
+                <div class="compliance-contact-options">
+                  <button
+                    type="button"
+                    class="btn btn-service compliance-contact-btn"
+                    data-compliance-action="call"
+                  >
+                    ☎ Call
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-service compliance-contact-btn"
+                    data-compliance-action="whatsapp"
+                  >
+                    ⓦ WhatsApp
+                  </button>
+                </div>
               </div>
-
-              <h3>
-                Website Development
-              </h3>
-
-              <p>
-                Fast, responsive and conversion-focused websites
-                designed around your business goals.
-              </p>
-
-              <button
-                type="button"
-                class="service-link"
-                data-open="web"
-              >
-                View capabilities
-                <span>↗</span>
-              </button>
-
             </div>
-
-          </article>
-
-
-          <!-- MOBILE -->
-
-          <article class="service-card">
-
-            <div class="service-image image-mobile">
-
-              <div class="image-label">
-                APP
-              </div>
-
-            </div>
-
-
-            <div class="service-body">
-
-              <div class="service-number">
-                02
-              </div>
-
-              <h3>
-                Mobile Application Development
-              </h3>
-
-              <p>
-                Modern mobile experiences for customer apps,
-                business workflows and digital products.
-              </p>
-
-              <button
-                type="button"
-                class="service-link"
-                data-open="mobile"
-              >
-                View capabilities
-                <span>↗</span>
-              </button>
-
-            </div>
-
-          </article>
-
-
-          <!-- SECURITY -->
-
-          <article class="service-card">
-
-            <div class="service-image image-security">
-
-              <div class="image-label">
-                SECURE
-              </div>
-
-            </div>
-
-
-            <div class="service-body">
-
-              <div class="service-number">
-                03
-              </div>
-
-              <h3>
-                Cybersecurity Services
-              </h3>
-
-              <p>
-                Practical security assessments and controls
-                to reduce exposure and improve resilience.
-              </p>
-
-              <button
-                type="button"
-                class="service-link"
-                data-open="security"
-              >
-                View capabilities
-                <span>↗</span>
-              </button>
-
-            </div>
-
-          </article>
-
-
-          <!-- TAX -->
-
-          <article class="service-card">
-
-            <div class="service-image image-tax">
-
-              <div class="image-label">
-                COMPLY
-              </div>
-
-            </div>
-
-
-            <div class="service-body">
-
-              <div class="service-number">
-                04
-              </div>
-
-              <h3>
-                Business Tax & Compliance
-              </h3>
-
-              <p>
-                Organized support for business tax,
-                documentation and compliance workflows.
-              </p>
-
-              <button
-                type="button"
-                class="service-link"
-                data-open="tax"
-              >
-                View capabilities
-                <span>↗</span>
-              </button>
-
-            </div>
-
-          </article>
-
-
-          <!-- ADS -->
-
-          <article class="service-card">
-
-            <div class="service-image image-ads">
-
-              <div class="image-label">
-                GROW
-              </div>
-
-            </div>
-
-
-            <div class="service-body">
-
-              <div class="service-number">
-                05
-              </div>
-
-              <h3>
-                Meta Ads & Digital Advertising
-              </h3>
-
-              <p>
-                Campaign planning, creative direction and
-                performance-focused digital advertising.
-              </p>
-
-              <button
-                type="button"
-                class="service-link"
-                data-open="ads"
-              >
-                View capabilities
-                <span>↗</span>
-              </button>
-
-            </div>
-
-          </article>
+          </div>
 
         </div>
 
@@ -616,7 +969,7 @@
 
       <div class="container">
 
-        <div class="section-heading centered reveal">
+        <div class="section-heading centered">
 
           <div>
 
@@ -639,7 +992,7 @@
         </div>
 
 
-        <div class="process-grid reveal-stagger">
+        <div class="process-grid">
 
           <div class="process-step">
 
@@ -864,7 +1217,7 @@
 
           <form
             id="contactForm"
-          action="https://docs.google.com/forms/d/e/1FAIpQLSf7G3JwPTaAsqw3-nPqALsuFwoGu5irnTgNmok975DABbYn4g/formResponse"
+          action="https://docs.google.com/forms/d/e/1FAIpQLSf7G3JwPTaAsqw3nPqALsuFwoGu5irnTgNmok975DABbYn4g/formResponse"
             method="POST"
             target="hidden_iframe"
           >
@@ -990,7 +1343,7 @@
       <div class="footer-brand">
 
         <img
-          src="assets/tervoxa-logo.jpg"
+          src="tervoxa-logo.jpeg"
           alt="Tervoxa Technologies logo"
         />
 
