@@ -1,37 +1,50 @@
-# tervoxa-technologies
-Official website of Tervoxa Technologies — building digital solutions, protecting businesses, ensuring compliance, and exploring AI.
+# Tervoxa Technologies — Professional Web App
 
-# Tervoxa Technologies
+A responsive, modern single-page business website for Tervoxa Technologies.
 
-Official website of Tervoxa Technologies.
+## Included service areas
+1. Website Development
+2. Mobile Application Development
+3. Cybersecurity Services
+4. Business Tax & Compliance Services
+5. Mera Ads & Digital Advertising
 
-## About
+## Features
+- Responsive desktop/tablet/mobile layout
+- Tervoxa Technologies logo included
+- Service cards with interactive capability modals
+- Contact section with:
+  - tervoxatechnologies@gmail.com
+  - Narela, Delhi
+- Contact form opens the visitor's email client using `mailto:`
+- No hiring/partners section
+- SEO-friendly metadata
+- No backend required
 
-Tervoxa Technologies is a technology company focused on building, protecting, and supporting modern businesses through technology.
+## Images
+Service imagery uses royalty-free Unsplash-hosted photographs through their image CDN. The site loads those images remotely.
 
-## Our Services
+## Run locally
+Open `index.html` directly in a browser, or use a simple local server:
 
-- **Build** — Web & Mobile App Development
-- **Protect** — Cybersecurity
-- **Comply** — Business Compliance & Solutions
-- **AI** — AI Solutions
+```bash
+python -m http.server 8000
+```
 
-## Website
+Then visit `http://localhost:8000`.
 
-This repository contains the source code for the official Tervoxa Technologies website.
+## Deploy on Vercel
+This is a static site and can be deployed directly:
+1. Upload the project to a Git repository.
+2. Import the repository into Vercel.
+3. Framework preset: Other.
+4. Build command: leave empty.
+5. Output directory: `.`
 
-## Technology
+You can also deploy the folder with Vercel's CLI.
 
-- HTML
-- CSS
-- JavaScript
-
-## Project Structure
-
-```text
-/
-├── index.html
-├── css/
-├── js/
-├── images/
-└── README.md
+## Main files
+- `index.html` — page structure
+- `style.css` — responsive styling
+- `script.js` — menu, service modals and contact form
+- `assets/tervoxa-logo.jpg` — supplied Tervoxa logo
