@@ -1,0 +1,26 @@
+import { ArrowRight, BriefcaseBusiness, CheckCircle2, Code2, Compass, PenTool, ShieldCheck, Target, Users } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { FinalCTA, SectionHead, Values } from '../components/SectionsProfessional';
+import { PageHero } from './GenericProfessional';
+
+const pillars = [
+  { icon: Code2, number: '01', title: 'Build', text: 'Websites, mobile applications and software that support the way your organisation works.' },
+  { icon: ShieldCheck, number: '02', title: 'Protect', text: 'Security assessments and guidance that help you understand and improve your digital environment.' },
+  { icon: BriefcaseBusiness, number: '03', title: 'Support', text: 'Business, compliance and digital design services that help turn requirements into progress.' }
+];
+const principles = [
+  ['Start with context', 'We take time to understand the business, the users and the situation behind the request.'],
+  ['Choose with purpose', 'The technology, structure and level of detail should fit the outcome—not the other way around.'],
+  ['Make it usable', 'A good result should be clear to the people who operate it, maintain it or depend on it.'],
+  ['Leave room to grow', 'Where appropriate, we consider future updates, maintenance, security and scale from the beginning.']
+];
+
+export default function AboutProfessional() { return <>
+  <PageHero eyebrow="About Tervoxa Technologies" title="Technology, security and design with a clear purpose." copy="Tervoxa Technologies helps businesses, organisations, professionals and individuals turn real requirements into dependable digital and technical solutions." />
+  <section className="section about-introduction"><div className="container about-intro-grid"><div className="about-intro-copy"><span className="eyebrow">Who we are</span><h2>We make technology useful to the work around it.</h2><p>Tervoxa Technologies is a technology and solutions company working across digital products, software, cybersecurity, business support and CAD design.</p><p>Our approach is grounded in the details that matter: the problem to solve, the people involved, the existing process and the result the organisation needs to achieve.</p><Link className="text-link" to="/contact">Discuss a requirement <ArrowRight size={16} /></Link></div><div className="about-intro-panel"><div className="panel-mark"><span>T</span><span>V</span></div><div><span className="eyebrow">Technology · Vision · Value</span><h3>One connected view of the work.</h3><p>Our interlocked T–V mark represents the connection between technology and forward-thinking vision—supported by the value created for each client.</p></div><div className="panel-line" /></div></div></section>
+  <section className="section about-pillars"><div className="container"><SectionHead eyebrow="Our role" title="From the first requirement to the next stage of growth." copy="Different projects need different combinations of capability. Our role is to bring the right focus to the work at the right time."/><div className="about-pillar-grid">{pillars.map(({ icon: Icon, number, title, text }) => <article className="about-pillar" key={title}><div className="about-pillar-top"><span>{number}</span><Icon /></div><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
+  <section className="section dark about-vision"><div className="container"><div className="about-vision-heading"><span className="eyebrow">Our vision</span><h2>Building a better digital future, one useful solution at a time.</h2></div><div className="about-vision-grid"><article><Compass /><span className="eyebrow">Vision</span><h3>A technology-driven company for modern organisations.</h3><p>We aim to create an environment where technology, cybersecurity, business solutions and digital design work together instead of operating in isolation.</p></article><article><Target /><span className="eyebrow">Mission</span><h3>Turn real-world requirements into work people can rely on.</h3><p>We focus on reliable digital products, tailored technology, better security practices, simpler business processes and professional CAD solutions.</p></article></div></div></section>
+  <section className="section about-method"><div className="container"><SectionHead eyebrow="How we think" title="Good delivery is more than a finished screen." copy="The quality of a solution is also measured by how clearly it was scoped, how responsibly it was built and how well it serves the people using it."/><div className="about-principles">{principles.map(([title, text], index) => <div key={title}><b>{String(index + 1).padStart(2, '0')}</b><div><h3>{title}</h3><p>{text}</p></div></div>)}</div></div></section>
+  <section className="section soft about-audience"><div className="container about-audience-inner"><div><span className="eyebrow">Who we support</span><h2>For organisations at different stages.</h2></div><div><p>Our services can support a startup establishing its presence, a growing business improving operations, a professional delivering technical work or an organisation strengthening its digital foundations.</p><Link className="button" to="/services">Explore our capabilities <ArrowRight size={17} /></Link></div></div></section>
+  <Values /><FinalCTA />
+</>; }

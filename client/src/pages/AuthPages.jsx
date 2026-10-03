@@ -1,0 +1,23 @@
+import { useState } from 'react';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { ArrowRight, LoaderCircle, LockKeyhole } from 'lucide-react';
+import { useAuth } from '../auth/AuthContext';
+import { PageHero } from './GenericProfessional';
+
+function AuthShell({ children, title, copy }) { return <><PageHero eyebrow="Account access" title={title} copy={copy} /><section className="section auth-section"><div className="auth-card">{children}</div></section></>; }
+
+export function Login() {
+  const { user, loading, login } = useAuth(); const navigate = useNavigate(); const location = useLocation(); const [form, setForm] = useState({ email: '', password: '' }); const [error, setError] = useState(''); const [busy, setBusy] = useState(false);
+  if (!loading && user) return <Navigate to={user.role === 'admin' ? '/admin' : (location.state?.from || '/dashboard')} replace />;
+  const submit = async event => { event.preventDefault(); setBusy(true); setError(''); try { const signedIn = await login(form); navigate(signedIn.role === 'admin' ? '/admin' : '/dashboard', { replace: true }); } catch (err) { setError(err.message); } finally { setBusy(false); } };
+  return <AuthShell title="Sign in to your Dashboard." copy="Track project conversations, submitted work and next steps from one secure account."><div className="auth-heading"><LockKeyhole /><div><h2>Welcome back</h2><p>Use your company account to continue.</p></div></div><form className="auth-form" onSubmit={submit}><label>Work email<input required type="email" value={form.email} onChange={event => setForm({ ...form, email: event.target.value })} /></label><label>Password<input required type="password" value={form.password} onChange={event => setForm({ ...form, password: event.target.value })} /></label>{error && <div className="form-error">{error}</div>}<button className="button" disabled={busy}>{busy ? <><LoaderCircle className="spin" />Signing in...</> : <>Sign in <ArrowRight size={18} /></>}</button></form><p className="auth-switch">New to Tervoxa? <Link to="/register">Create a company account</Link></p></AuthShell>;
+}
+
+export function Register() {
+  const { user, loading, register } = useAuth(); const navigate = useNavigate(); const [form, setForm] = useState({ fullName: '', companyName: '', email: '', phone: '', password: '' }); const [error, setError] = useState(''); const [busy, setBusy] = useState(false);
+  if (!loading && user) return <Navigate to="/dashboard" replace />;
+  const submit = async event => { event.preventDefault(); setBusy(true); setError(''); try { await register(form); navigate('/dashboard', { replace: true }); } catch (err) { setError(err.message); } finally { setBusy(false); } };
+  return <AuthShell title="Create your company account." copy="Register once, then keep your Dashboard, project requests, delivery updates and conversations in one place."><div className="auth-heading"><LockKeyhole /><div><h2>Company registration</h2><p>Use a monitored work email for project updates.</p></div></div><form className="auth-form" onSubmit={submit}><div className="form-row"><label>Your name<input required value={form.fullName} onChange={event => setForm({ ...form, fullName: event.target.value })} /></label><label>Company name<input required value={form.companyName} onChange={event => setForm({ ...form, companyName: event.target.value })} /></label></div><div className="form-row"><label>Work email<input required type="email" value={form.email} onChange={event => setForm({ ...form, email: event.target.value })} /></label><label>Phone number<input required value={form.phone} onChange={event => setForm({ ...form, phone: event.target.value })} /></label></div><label>Password<input required minLength="8" type="password" value={form.password} onChange={event => setForm({ ...form, password: event.target.value })} /><small>At least 8 characters, including a letter and a number.</small></label>{error && <div className="form-error">{error}</div>}<button className="button" disabled={busy}>{busy ? <><LoaderCircle className="spin" />Creating account...</> : <>Create account <ArrowRight size={18} /></>}</button></form><p className="auth-switch">Already registered? <Link to="/login">Sign in</Link></p></AuthShell>;
+}
+
+export function ProtectedRoute({ children, role }) { const { user, loading } = useAuth(); if (loading) return <div className="route-loading">Loading your Dashboard...</div>; if (!user) return <Navigate to="/login" replace />; if (role && user.role !== role) return <Navigate to={user.role === 'admin' ? '/admin' : '/dashboard'} replace />; return children; }

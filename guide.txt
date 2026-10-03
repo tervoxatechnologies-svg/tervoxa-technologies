@@ -1,0 +1,1138 @@
+TERVOXA TECHNOLOGIES
+COMPLETE SETUP, ROADMAP, TESTING, AND DEPLOYMENT GUIDE
+
+======================================================================
+1. PROJECT OVERVIEW
+======================================================================
+
+Tervoxa Technologies is a full-stack web application consisting of:
+
+- Public marketing website
+- About, services, process, FAQ, legal, and contact pages
+- General enquiry form inside the FAQ page
+- Project enquiry form inside the Contact page
+- MongoDB inquiry storage
+- Google Forms synchronization
+- User registration and login
+- Optional Google OAuth login
+- Client Dashboard
+- Admin Dashboard
+- Project registration and status tracking
+- Admin project notes and status updates
+- Responsive navigation and layouts
+- Animated cards, buttons, sections, and dashboard panels
+
+The project has two applications:
+
+Frontend:
+  client\
+
+Backend:
+  server\
+
+The root project scripts control both applications.
+
+
+======================================================================
+2. TECHNOLOGY STACK
+======================================================================
+
+Frontend:
+
+- React
+- React Router
+- Vite
+- Lucide React
+- CSS
+
+Backend:
+
+- Node.js
+- Express
+- MongoDB
+- Mongoose
+- JWT
+- HTTP-only authentication cookies
+- Helmet
+- CORS
+- Express rate limiting
+- Google Forms integration
+- Google OAuth support
+
+
+======================================================================
+3. REQUIRED SOFTWARE
+======================================================================
+
+Install the following software before setup:
+
+- Node.js 20 or newer
+- npm 10 or newer
+- MongoDB 6 or newer
+- A modern web browser
+- Git, if source control is required
+
+Verify Node.js and npm:
+
+  node --version
+  npm --version
+
+The backend uses modern Node.js features, including:
+
+- Native fetch
+- ES modules
+- AbortController
+- Modern Express
+- Modern Mongoose
+
+
+======================================================================
+4. INSTALLATION
+======================================================================
+
+Open PowerShell in:
+
+  C:\Users\visha\Music\tervoxa-technologies
+
+Install all dependencies:
+
+  npm run install:all
+
+If the root command is unavailable, install separately:
+
+  npm --prefix client install
+  npm --prefix server install
+
+The root package contains these main scripts:
+
+  npm run dev
+    Starts the frontend and backend together.
+
+  npm run build
+    Builds the frontend for production.
+
+  npm start
+    Starts the backend server.
+
+
+======================================================================
+5. MONGODB SETUP
+======================================================================
+
+MongoDB stores:
+
+- User accounts
+- Project registrations
+- Inquiry records
+- Project statuses
+- Admin notes
+- Inquiry synchronization status
+
+Local MongoDB connection:
+
+  mongodb://127.0.0.1:27017/tervoxa
+
+MongoDB Atlas connection example:
+
+  mongodb+srv://USERNAME:PASSWORD@CLUSTER.mongodb.net/tervoxa
+
+For MongoDB Atlas:
+
+1. Create a cluster.
+2. Create a database user.
+3. Configure the database password.
+4. Allow the backend server IP address in Network Access.
+5. Use the connection string in server\.env.
+6. Never commit the connection string to source control.
+
+
+======================================================================
+6. BACKEND ENVIRONMENT CONFIGURATION
+======================================================================
+
+Copy:
+
+  server\.env.example
+
+to:
+
+  server\.env
+
+Example development configuration:
+
+  NODE_ENV=development
+  PORT=5000
+  MONGODB_URI=mongodb://127.0.0.1:27017/tervoxa
+  CLIENT_ORIGIN=http://localhost:5173
+  TRUST_PROXY=false
+  INQUIRY_RATE_LIMIT_MAX=10
+  INQUIRY_RATE_LIMIT_WINDOW_MS=900000
+  GOOGLE_REQUEST_TIMEOUT_MS=10000
+
+For production:
+
+  NODE_ENV=production
+  CLIENT_ORIGIN=https://your-frontend-domain.com
+  TRUST_PROXY=true
+
+Do not expose the backend .env file publicly.
+
+
+======================================================================
+7. ADMIN ACCOUNT SETUP
+======================================================================
+
+The administrator bootstrap logic is located at:
+
+  server\src\config\admin.js
+
+Configure these environment values:
+
+  ADMIN_EMAIL=admin@yourdomain.com
+  ADMIN_PASSWORD=Use-a-long-random-password
+
+Use:
+
+- A real administrator email address
+- A strong unique password
+- A password that is not used anywhere else
+
+When the server starts, it creates or updates the admin account.
+
+If the values are empty, the server reports that admin bootstrap was
+skipped. The application can still run, but automatic admin login setup
+will not be available.
+
+
+======================================================================
+8. GOOGLE FORMS SETUP
+======================================================================
+
+Google Forms synchronization is implemented in:
+
+  server\src\services\google-forms.service.js
+
+Configuration is loaded in:
+
+  server\src\config\env.js
+
+Required values:
+
+  GOOGLE_FORM_VIEW_URL=https://docs.google.com/forms/d/e/FORM_ID/viewform
+  GOOGLE_FORM_ACTION_URL=https://docs.google.com/forms/d/e/FORM_ID/formResponse
+
+The view URL is used by the direct Google Form button.
+
+The action URL is used by the backend to submit form responses.
+
+Current entry mapping:
+
+  GOOGLE_ENTRY_FULL_NAME=entry.xxxxx
+  GOOGLE_ENTRY_EMAIL=entry.xxxxx
+  GOOGLE_ENTRY_PHONE=entry.xxxxx
+  GOOGLE_ENTRY_COMPANY=entry.xxxxx
+  GOOGLE_ENTRY_SERVICE=entry.xxxxx
+  GOOGLE_ENTRY_PROJECT=entry.xxxxx
+
+Each entry ID must match the correct Google Form question.
+
+To inspect entry IDs:
+
+1. Open the Google Form preview.
+2. Open browser developer tools.
+3. Inspect the form fields.
+4. Find names such as entry.123456789.
+5. Match each entry ID to its question.
+6. Add the values to server\.env.
+
+Project enquiries send:
+
+- Full name
+- Email
+- Phone number
+- Company
+- Service
+- Project requirement
+- Brief notes
+
+Project requirement and brief notes are combined into the project field.
+
+General enquiries send:
+
+- Full name
+- Email
+- WhatsApp number through the existing phone field
+- Company
+- Message
+
+The preferred contact option is currently stored in MongoDB. It is not
+mapped to a separate Google Form field unless a dedicated entry mapping
+is added.
+
+If required, add a Google Form field and configure:
+
+  GOOGLE_ENTRY_CONTACT_PREFERENCE=entry.xxxxx
+
+Then update the backend mapping to submit:
+
+- No call requested
+- WhatsApp only
+- Morning
+- Afternoon
+- Evening
+
+
+======================================================================
+9. FRONTEND ENVIRONMENT CONFIGURATION
+======================================================================
+
+For local development, the frontend uses:
+
+  http://localhost:5000
+
+For production, create:
+
+  client\.env
+
+Example:
+
+  VITE_API_URL=https://api.yourdomain.com
+
+Only public configuration may be placed in client\.env.
+
+Never place these in frontend environment files:
+
+- Database passwords
+- JWT secrets
+- Admin passwords
+- Private OAuth secrets
+- Private API keys
+
+
+======================================================================
+10. RUNNING THE APPLICATION
+======================================================================
+
+Start frontend and backend together:
+
+  npm run dev
+
+Frontend:
+
+  http://localhost:5173
+
+Backend:
+
+  http://localhost:5000
+
+Start only the backend:
+
+  npm --prefix server run dev
+
+Start only the frontend:
+
+  npm --prefix client run dev
+
+Start backend normally:
+
+  npm start
+
+Build frontend:
+
+  npm run build
+
+
+======================================================================
+11. PUBLIC ROUTES
+======================================================================
+
+  /
+    Homepage
+
+  /about
+    About page
+
+  /services
+    Services overview
+
+  /services/web-development
+    Web development detail page
+
+  /services/:slug
+    Other service detail pages
+
+  /process
+    Company process
+
+  /faq
+    FAQ and general enquiry form
+
+  /contact
+    Project enquiry form
+
+  /contact/project
+    Compatibility alias for the project enquiry page
+
+  /login
+    Login page
+
+  /register
+    Registration page
+
+  /dashboard
+    Client Dashboard
+
+  /admin
+    Admin Dashboard
+
+  /privacy-policy
+    Privacy policy
+
+  /terms
+    Terms and conditions
+
+  /disclaimer
+    Disclaimer
+
+
+======================================================================
+12. GENERAL ENQUIRY FLOW
+======================================================================
+
+The general enquiry form is located inside:
+
+  /faq
+
+Fields:
+
+- Full Name
+- Email Address
+- WhatsApp Number
+- Company / Organization
+- Message
+- Preferred contact option
+
+Preferred contact options:
+
+- No call requested
+- WhatsApp only
+- Morning
+- Afternoon
+- Evening
+
+Backend endpoint:
+
+  POST /api/inquiries/general
+
+The backend:
+
+1. Sanitizes input.
+2. Validates required values.
+3. Validates email and WhatsApp number.
+4. Stores the inquiry in MongoDB.
+5. Attempts Google Forms synchronization.
+6. Returns success or an explicit error.
+
+
+======================================================================
+13. PROJECT ENQUIRY FLOW
+======================================================================
+
+The project enquiry form is located inside:
+
+  /contact
+
+Fields:
+
+- Full Name
+- Email Address
+- Phone Number
+- Company / Organization
+- Service Required
+- Project / Requirement
+- Brief Notes
+
+Backend endpoint:
+
+  POST /api/inquiries/project
+
+The backend:
+
+1. Sanitizes input.
+2. Requires all project fields.
+3. Validates email and phone.
+4. Validates the selected service.
+5. Stores the inquiry in MongoDB.
+6. Attempts Google Forms synchronization.
+7. Returns success or an explicit error.
+
+The Contact page also contains an Open Google Form button.
+
+
+======================================================================
+14. CLIENT DASHBOARD
+======================================================================
+
+The Client Dashboard is:
+
+  /dashboard
+
+A client must:
+
+1. Register an account.
+2. Log in.
+3. Open the Dashboard.
+4. Register a project.
+5. View project status and updates.
+
+The client Dashboard contains:
+
+- Total projects
+- Active projects
+- Completed projects
+- New project form
+- Project list
+- Project statuses
+- Admin notes when available
+
+Clients can only see projects owned by their own account.
+
+Clients cannot:
+
+- View other clients' projects.
+- Change project status.
+- Add admin notes.
+- Access admin-only update endpoints.
+
+
+======================================================================
+15. ADMIN DASHBOARD
+======================================================================
+
+The Admin Dashboard is:
+
+  /admin
+
+The administrator can:
+
+- View all client projects.
+- View company information.
+- View project service and timeline.
+- Change project status.
+- Add admin notes.
+- Review project submissions.
+
+Available statuses:
+
+- Submitted
+- Under review
+- Approved
+- In progress
+- On hold
+- Completed
+- Cancelled
+
+Only an administrator can call:
+
+  PATCH /api/projects/:id/status
+
+
+======================================================================
+16. BACKEND API ENDPOINTS
+======================================================================
+
+Health:
+
+  GET /api/health
+
+Expected:
+
+  {"ok":true,"service":"tervoxa-api"}
+
+Readiness:
+
+  GET /api/ready
+
+Expected when database is available:
+
+  {
+    "ok": true,
+    "database": "connected",
+    "googleForms": true,
+    "googleAuth": false
+  }
+
+Authentication:
+
+  POST /api/auth/register
+  POST /api/auth/login
+  GET /api/auth/me
+  POST /api/auth/logout
+  GET /api/auth/google
+  GET /api/auth/google/callback
+
+Inquiries:
+
+  POST /api/inquiries/general
+  POST /api/inquiries/project
+
+Projects:
+
+  GET /api/projects
+  POST /api/projects
+  PATCH /api/projects/:id/status
+
+
+======================================================================
+17. COMPLETE TESTING PROCEDURE
+======================================================================
+
+PHASE 1: Dependency installation
+
+  npm run install:all
+
+Confirm:
+
+- Client dependencies install.
+- Server dependencies install.
+- No package installation errors occur.
+
+
+PHASE 2: Server syntax validation
+
+Run:
+
+  $files = Get-ChildItem -Path server\src -Recurse -Filter *.js
+  foreach ($file in $files) {
+    node --check $file.FullName
+  }
+
+Expected:
+
+- No syntax errors.
+- All server JavaScript files pass.
+
+
+PHASE 3: Frontend production build
+
+  npm run build
+
+Confirm:
+
+- Vite completes successfully.
+- No JSX errors.
+- No missing imports.
+- No CSS errors.
+- client\dist is created.
+
+
+PHASE 4: Backend startup
+
+  npm start
+
+Confirm logs include:
+
+  mongodb_connected
+  Tervoxa API running on port 5000
+
+Possible warning:
+
+  admin_bootstrap_skipped
+
+This is only a problem if admin environment variables were expected.
+
+
+PHASE 5: Health checks
+
+  Invoke-WebRequest -UseBasicParsing http://localhost:5000/api/health
+
+  Invoke-WebRequest -UseBasicParsing http://localhost:5000/api/ready
+
+Confirm:
+
+- API responds.
+- Database reports connected.
+- Google Forms reports true when configured.
+- Google Auth reports true only when configured.
+
+
+PHASE 6: Public page testing
+
+Open every route:
+
+- /
+- /about
+- /services
+- /process
+- /faq
+- /contact
+- /login
+- /register
+- /privacy-policy
+- /terms
+- /disclaimer
+
+Confirm:
+
+- No blank page.
+- No broken route.
+- Navigation works.
+- Back and forward browser controls work.
+- Footer links work.
+- Service dropdown works.
+- Mobile menu works.
+
+
+PHASE 7: General enquiry testing
+
+Open:
+
+  http://localhost:5173/faq
+
+Test:
+
+1. Empty form.
+2. Invalid email.
+3. Invalid WhatsApp number.
+4. Missing message.
+5. Select WhatsApp only.
+6. Select Morning.
+7. Select Afternoon.
+8. Select Evening.
+9. Submit valid data.
+
+Expected:
+
+- Invalid input is rejected.
+- Valid input returns success.
+- The form resets after success.
+- Submit button shows loading state.
+- MongoDB receives the inquiry.
+- Google Forms receives mapped fields.
+
+Example:
+
+  $body = @{
+    fullName = "Test User"
+    email = "test@example.com"
+    phone = "+919876543210"
+    message = "General enquiry test"
+    requestCallTime = "WhatsApp only"
+  } | ConvertTo-Json
+
+  Invoke-WebRequest `
+    -UseBasicParsing `
+    -Method Post `
+    -Uri http://localhost:5000/api/inquiries/general `
+    -ContentType "application/json" `
+    -Body $body
+
+Expected status:
+
+  201
+
+
+PHASE 8: Project enquiry testing
+
+Open:
+
+  http://localhost:5173/contact
+
+Test:
+
+1. Empty form.
+2. Invalid email.
+3. Invalid phone.
+4. Missing service.
+5. Missing project details.
+6. Valid project submission.
+7. Direct Google Form button.
+8. Service preselection from service page.
+
+Expected:
+
+- Required fields are enforced.
+- Invalid service is rejected.
+- Valid data is accepted.
+- MongoDB receives the project inquiry.
+- Google Forms receives the mapped values.
+- Success feedback is displayed.
+
+
+PHASE 9: Google Forms verification
+
+Do not rely only on the API status code.
+
+After a test submission:
+
+1. Open the Google Form response spreadsheet.
+2. Confirm a new row exists.
+3. Check the full name.
+4. Check the email.
+5. Check the phone or WhatsApp number.
+6. Check company.
+7. Check service.
+8. Check project details.
+9. Check notes.
+10. Confirm the timestamp.
+
+This confirms actual end-to-end synchronization.
+
+
+PHASE 10: Registration testing
+
+Open:
+
+  /register
+
+Test:
+
+1. Empty form.
+2. Invalid email.
+3. Weak password.
+4. Duplicate email.
+5. Valid registration.
+6. Logout.
+7. Login with the new account.
+
+Expected:
+
+- Invalid values are rejected.
+- Duplicate account is rejected.
+- Valid account is stored.
+- Login succeeds.
+- Dashboard redirect works.
+
+
+PHASE 11: Login testing
+
+Open:
+
+  /login
+
+Test:
+
+1. Empty email.
+2. Invalid email.
+3. Wrong password.
+4. Correct credentials.
+5. Refresh after login.
+6. Logout.
+
+Expected:
+
+- Invalid credentials fail safely.
+- Correct credentials create a session.
+- Dashboard loads.
+- Session survives refresh.
+- Logout clears the session.
+
+
+PHASE 12: Client Dashboard testing
+
+After logging in as a client:
+
+1. Open /dashboard.
+2. Confirm the user name.
+3. Confirm company name.
+4. Confirm dashboard statistics.
+5. Submit a project.
+6. Confirm it appears in the project list.
+7. Refresh the page.
+8. Confirm it remains visible.
+9. Confirm status appears.
+10. Confirm admin notes appear after admin update.
+
+Expected:
+
+- Client can create projects.
+- Client sees only owned projects.
+- Client cannot update status.
+- Client cannot access /admin.
+
+
+PHASE 13: Admin Dashboard testing
+
+Configure:
+
+  ADMIN_EMAIL=admin@yourdomain.com
+  ADMIN_PASSWORD=strong-password
+
+Restart the server.
+
+Then:
+
+1. Log in as admin.
+2. Open /admin.
+3. Confirm all projects appear.
+4. Change a project status.
+5. Add a note.
+6. Save the update.
+7. Log in as the client.
+8. Confirm the client sees the update.
+
+Expected:
+
+- Admin sees all projects.
+- Admin can update status.
+- Admin can add notes.
+- Client can see permitted updates.
+- Non-admin users cannot update status.
+
+
+PHASE 14: Authorization testing
+
+Logged out request:
+
+  Invoke-WebRequest -UseBasicParsing http://localhost:5000/api/projects
+
+Expected:
+
+  401 Unauthorized
+
+Non-admin status update:
+
+Expected:
+
+  403 Administrator access is required.
+
+Cross-client access:
+
+- Create two client accounts.
+- Create a project under Client A.
+- Log in as Client B.
+- Confirm Client B cannot see Client A's project.
+
+
+======================================================================
+18. RESPONSIVE TESTING
+======================================================================
+
+Test viewport widths:
+
+- 320px
+- 375px
+- 414px
+- 768px
+- 1024px
+- 1280px
+- 1440px
+
+Check:
+
+- No horizontal scrolling.
+- Header fits.
+- Mobile menu opens and closes.
+- Hero content stacks.
+- Forms fit.
+- Buttons do not overflow.
+- Dashboard statistics stack.
+- Project cards remain readable.
+- FAQ accordion works.
+- Footer columns stack.
+- Inputs are usable on mobile.
+
+Test browsers:
+
+- Chrome
+- Edge
+- Firefox
+- Safari on iPhone, if available
+
+
+======================================================================
+19. ANIMATION AND UI TESTING
+======================================================================
+
+Check:
+
+- Button hover states.
+- Service card hover effects.
+- Dashboard panel hover effects.
+- FAQ accordion animation.
+- Form focus styles.
+- Loading spinner.
+- Header scroll behavior.
+- Mobile navigation behavior.
+- Card shadows and elevation.
+- Animation performance on mobile.
+
+Add or verify reduced-motion support:
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms;
+      animation-iteration-count: 1;
+      transition-duration: 0.01ms;
+      scroll-behavior: auto;
+    }
+  }
+
+
+======================================================================
+20. IMPORTANT PRODUCTION CHECK
+======================================================================
+
+The backend CORS configuration should allow PATCH because the admin
+Dashboard updates projects using PATCH.
+
+Confirm the CORS methods include:
+
+  GET
+  POST
+  PATCH
+  OPTIONS
+
+Recommended:
+
+  methods: ['GET', 'POST', 'PATCH', 'OPTIONS']
+
+If future clients use bearer tokens, also allow:
+
+  allowedHeaders: ['Content-Type', 'Authorization']
+
+Current authentication uses cookies, but this makes future integrations
+easier.
+
+
+======================================================================
+21. PRODUCTION SECURITY CHECKLIST
+======================================================================
+
+Before deployment:
+
+- Replace the development JWT secret.
+- Configure a strong admin password.
+- Use a production MongoDB URI.
+- Restrict CLIENT_ORIGIN.
+- Enable HTTPS.
+- Configure secure cookies.
+- Configure TRUST_PROXY correctly.
+- Verify CORS origins.
+- Never commit .env files.
+- Rotate exposed credentials.
+- Keep rate limiting enabled.
+- Keep Helmet enabled.
+- Restrict MongoDB network access.
+- Verify Google Form mappings.
+- Remove test data.
+- Configure database backups.
+- Configure uptime monitoring.
+- Configure server error logging.
+
+
+======================================================================
+22. DEPLOYMENT CHECKLIST
+======================================================================
+
+Backend production values:
+
+  NODE_ENV=production
+  PORT=5000
+  MONGODB_URI=production-mongodb-uri
+  CLIENT_ORIGIN=https://your-frontend-domain.com
+  TRUST_PROXY=true
+  JWT_SECRET=long-random-production-secret
+  ADMIN_EMAIL=admin@yourdomain.com
+  ADMIN_PASSWORD=strong-production-password
+  GOOGLE_FORM_VIEW_URL=google-form-view-url
+  GOOGLE_FORM_ACTION_URL=google-form-response-url
+  GOOGLE_ENTRY_FULL_NAME=entry.xxxxx
+  GOOGLE_ENTRY_EMAIL=entry.xxxxx
+  GOOGLE_ENTRY_PHONE=entry.xxxxx
+  GOOGLE_ENTRY_COMPANY=entry.xxxxx
+  GOOGLE_ENTRY_SERVICE=entry.xxxxx
+  GOOGLE_ENTRY_PROJECT=entry.xxxxx
+
+Backend start command:
+
+  npm start
+
+Frontend build:
+
+  npm run build
+
+Deploy:
+
+  client\dist
+
+The production host must support SPA fallback so routes such as /faq,
+/contact, and /dashboard serve the frontend index.html.
+
+
+======================================================================
+23. FINAL ACCEPTANCE CHECKLIST
+======================================================================
+
+- [ ] Dependencies install successfully.
+- [ ] Client build succeeds.
+- [ ] All server files pass syntax checks.
+- [ ] MongoDB connects.
+- [ ] /api/health succeeds.
+- [ ] /api/ready reports database connected.
+- [ ] Public pages load.
+- [ ] Contact page loads.
+- [ ] FAQ page loads.
+- [ ] General enquiry submission works.
+- [ ] Project enquiry submission works.
+- [ ] Google Form receives test data.
+- [ ] Registration works.
+- [ ] Login works.
+- [ ] Logout works.
+- [ ] Client Dashboard loads.
+- [ ] Client can submit a project.
+- [ ] Client sees only owned projects.
+- [ ] Admin sees all projects.
+- [ ] Admin can update project status.
+- [ ] Client sees permitted admin updates.
+- [ ] Unauthorized requests return 401.
+- [ ] Non-admin updates return 403.
+- [ ] Mobile layout works.
+- [ ] Desktop layout works.
+- [ ] No horizontal overflow exists.
+- [ ] All form field mappings are verified.
+- [ ] Test data is removed.
+- [ ] Production secrets are configured.
+- [ ] CORS includes PATCH.
+- [ ] Google OAuth is configured if required.
+
+
+======================================================================
+24. CURRENT STATUS
+======================================================================
+
+The following parts have already been verified:
+
+- Frontend production build passes.
+- All server JavaScript files pass syntax checks.
+- MongoDB connection works.
+- API health endpoint works.
+- API readiness endpoint works.
+- Public pages load.
+- Contact page loads.
+- FAQ page loads.
+- Login page loads.
+- Project inquiry validation works.
+- General inquiry validation works.
+- Google Forms configuration is detected.
+- Dashboard authorization logic is implemented.
+- Client project filtering is implemented.
+- Admin project access is implemented.
+- Admin-only status updates are protected.
+- Contact and Dashboard navigation labels are updated.
+- Consultation wording was changed to project enquiry wording.
+
+Remaining production actions:
+
+1. Configure ADMIN_EMAIL and ADMIN_PASSWORD.
+2. Configure Google OAuth if required.
+3. Confirm CORS allows PATCH.
+4. Perform a complete logged-in client workflow.
+5. Perform a complete logged-in admin workflow.
+6. Verify a real Google Forms response row.
+7. Remove test inquiries and projects.
+8. Deploy using HTTPS and production environment variables.
+
+END OF GUIDE
